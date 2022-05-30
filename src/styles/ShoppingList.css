@@ -1,9 +1,13 @@
+.lmj-shopping-list {
+    width: 100%;
+}
+
 .lmj-plant-list {
     list-style-type: none;
     padding: 32px;
     display: flex;
     flex-wrap: wrap;
-    max-width: 800px;
+    justify-content: center;
 }
 
 .lmj-plant-item {
@@ -24,5 +28,22 @@
     padding: 32px;
     display: flex;
     flex-wrap: wrap;
+    max-width: 800px;
+}
+
+.lmj-plant-list {
+    list-style-type: none;
+    padding: 32px;
+    display: flex;
+    flex-wrap: wrap;
     max-width: 100%;
+}
+
+.lmj-categories {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.lmj-categories-select {
+    margin-right: 15px;
 }

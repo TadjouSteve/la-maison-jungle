@@ -1,24 +1,51 @@
+import { useState, useEffect } from 'react'
 import '../styles/Cart.css'
 
-function Cart(){
-
-    var priceMonstera = 8;
-    var priceLierre = 10;
-    var priceBouquet = 15;
-
-    return (
-        <div className='lmj-cart'>
-            <h2>Panier</h2>
-            <ul>
-                <li>Monstera:{priceMonstera}</li>
-                <li>Lierre:{priceLierre}</li>
-                <li>Bouquet de fleurs:{priceBouquet}</li>
-            </ul>
-
-            <h4>Prix total:{priceBouquet + priceLierre + priceMonstera}</h4>
-        </div>
+function Cart({ cart, updateCart }) {
+    const [isOpen, setIsOpen] = useState(true)
+    const total = cart.reduce(
+        (acc, plantType) => acc + plantType.number * plantType.price,
+        0
     )
 
+    useEffect(() => {
+        document.title = `LMJ: ${total}€ d'achats`
+    },[total])
+    return isOpen ? (
+        <div className='lmj-cart'>
+            <button
+                className='lmj-cart-toggle-button'
+                onClick={() => setIsOpen(false)}
+            >
+                Fermer
+            </button>
+            {cart.length > 0 ? (
+                <div>
+                    <h2>Panier</h2>
+                    <ul>
+                        {cart.map(({ name, price, number }, index) => (
+                            <li key={`${name}-${index}`}>
+                                {name} {price}€ x {number}
+                            </li>
+                        ))}
+                    </ul>
+                    <h3>Total :{total}€</h3>
+                    <button onClick={() => updateCart([])}>Vider le panier</button>
+                </div>
+            ) : (
+                <div>Votre panier est vide</div>
+            )}
+        </div>
+    ) : (
+        <div className='lmj-cart-closed'>
+            <button
+                className='lmj-cart-toggle-button'
+                onClick={() => setIsOpen(true)}
+            >
+                Ouvrir le Panier
+            </button>
+        </div>
+    )
 }
 
-export default Cart;
+export default Cart

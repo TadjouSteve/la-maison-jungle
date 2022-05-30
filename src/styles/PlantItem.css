@@ -2,7 +2,9 @@
     height: 220px;
     width: 220px;
     border-radius: 20px;
+    object-fit: cover;
 }
+
 
 .lmj-plant-item {
     margin: 6px;
@@ -18,4 +20,15 @@
     border-left: none;
     border-right: none;
 
+}
+
+.lmj-plant-item-price {
+    position: absolute;
+    border-radius: 20px 0px 20px 0px;
+    background-color: #31b472;
+    color: white;
+    padding: 15px;
+    right: 0;
+    top: 0;
+    font-weight: 500;
 }
